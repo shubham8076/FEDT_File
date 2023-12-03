@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic HTML Experiment</title>
+  </head>
+  <body>
+    <h1>Dynamic HTML Experiment</h1>
+
+    <div id="elementsContainer"></div>
+
+    <button onclick="addElement()">Add Element</button>
+    <button onclick="removeElement()">Remove Element</button>
+
+    <script>
+      let elementCount = 0;
+
+      function addElement() {
+        elementCount++;
+
+        const newElement = document.createElement("div");
+        newElement.textContent = `Element ${elementCount}`;
+        newElement.className = "dynamic-element";
+
+        const elementsContainer = document.getElementById("elementsContainer");
+        elementsContainer.appendChild(newElement);
+      }
+
+      function removeElement() {
+        if (elementCount > 0) {
+          const elementsContainer =
+            document.getElementById("elementsContainer");
+          const lastElement = elementsContainer.lastChild;
+          elementsContainer.removeChild(lastElement);
+          elementCount--;
+        }
+      }
+    </script>
+  </body>
+</html>
